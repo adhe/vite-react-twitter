@@ -1,25 +1,36 @@
 import React from 'react'
+import { AppLayout } from './layouts/AppLayout'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { Nav } from './components/nav'
+import Home from './views/Home'
+import Search from './views/Search'
+import Messages from './views/Messages'
+import Notifications from './views/Notifications'
 
 function App() {
   return (
-    <div>
-      <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-        <div className="
-          bg-white rounded-md p-4 shadow-lg
-          lg:(bg-gray-800 rounded-full py-8 px-12 shadow-xl)
-        ">
-          <h2 className="
-            text-2xl font-semibold text-center mb-1 text-red-400
-            lg:(text-4xl font-extrabold text-left mb-3 text-green-300)
-          ">Hello Vite, React, and Windi!</h2>
-          <p className="
-            text-gray-500 text-sm italic font-light
-            lg:(text-gray-400 text-2xl underline not-italic)
-          ">Testing-testing ahh 😎</p>
+    <AppLayout>
+      <Router>
+        <div className="flex-1">
+          <Switch>
+            <Route path="/notifications">
+              <Notifications />
+            </Route>
+            <Route path="/search">
+              <Search />
+            </Route>
+            <Route path="/messages">
+              <Messages />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
         </div>
-      </div>
-    </div>
+        <Nav />
+      </Router>
+    </AppLayout>
   )
-}
+};
 
-export default App
+export default App;
